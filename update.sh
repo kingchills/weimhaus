@@ -1,5 +1,6 @@
 #!/bin/bash
 source ./.env
+source ./.env.local
 
 echo "Building for $APP_ENV"
 
