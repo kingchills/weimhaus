@@ -1,6 +1,8 @@
 #!/bin/bash
 source ./.env
 
+echo "Building for $APP_ENV"
+
 echo "Enter new version number(2.0, 2.12, etc) then [ENTER], leave blank for current ($APP_VERSION):"
 read version
 
