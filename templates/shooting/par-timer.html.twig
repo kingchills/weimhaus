@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Par Timer{% endblock %}
+
+{% set navbarClass = 'navbar-dark bg-dark' %}
+
+
+{% block body %}
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Dry Fire Timer</h2>
+            <p class="lead">
+                Use the below form to set up a timer.
+            </p>
+            <p class="small">
+                If your browser supports local storage, these values will be saved whenever you hit start.
+            </p>
+        </div>
+        <form id="par-timer-form">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="min_delay">Min Delay</label>
+                        <input class="form-control" type="number" name="min_delay" id="min_delay" value="2"/>
+                        <small class="form-text text-muted">The minimum delay</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="max_delay">Max Delay</label>
+                        <input class="form-control" type="number" name="max_delay" id="max_delay" value="5"/>
+                        <small class="form-text text-muted">The maximum delay</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group form-check">
+                        <input class="form-check-input" type="checkbox" value="1" name="par_timer" id="par_timer">
+                        <label class="form-check-label" for="par_timer">
+                            Use As Par Timer?
+                        </label>
+                        <small class="form-text text-muted">Par timer will beep a second time after set interval</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="par_delay">Par Delay</label>
+                        <input class="form-control" type="number" name="par_delay" id="par_delay" value=""/>
+                        <small class="form-text text-muted">Length of time before second beep.  Note: The shorest time before second beep is .7 seconds, any faster and you will only hear 1 beep.</small>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-lg w-100" id="play">Start</button>
+                        <small class="form-text text-muted">Pressing space will also start timer</small>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+        <audio id="beep" src="{{ asset('build/sounds/beep.m4a') }}"></audio>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('par-timer') }}
+
+{% endblock javascripts %}
+
+
+
